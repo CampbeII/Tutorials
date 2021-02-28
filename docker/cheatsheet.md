@@ -25,6 +25,7 @@ Creating a network will allow containers to talk to each other.
 - `docker netework ls` - List networks
 
 ## Volumes
+Volumes help you share data with your host or other containers.
 - `docker volume create NAME` - create a volume
 - `docker volume ls` - List volumes
 - `docker volume rm NAME` - Remove volumes
@@ -41,4 +42,4 @@ How to interact with containers
 
 ## Docker Compose
 - `docker-compose -d up` - bring up your env
-- `docker-compose down --volumes` - clean up, with optionally removing volumes
+- `docker-compose down --volumes` - clean up, optionally removing volumes
