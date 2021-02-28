@@ -14,6 +14,23 @@ According to their [website](https://docs.docker.com/get-started/overview/) "Doc
 ## Installing Docker
 The installation process is simple. Follow the instructions and it should go smoothly. Once installed, you are prompted with a tutorial to help you get started. 
 
+### Getting Help
+You can get whatever you need from the man pages.
+
+```shell
+docker COMMAND --help
+```
+
+View all processes
+```shell
+docker ps -a
+```
+
+clean up & pruning:
+```shell
+docker contaier prune
+```
+
 ### Building an Image
 An image is a private file system that provides everything that our container needs. To build an image in the current directory:
 
@@ -21,37 +38,28 @@ An image is a private file system that provides everything that our container ne
 docker build -t image .
 ```
 
-### Run a Container
-We'll need to start a container based on the image we built. 
-- `-d` - detatched mode (runs in background)
-- `-p 80:80`- map host port 80 to container port 80
-- `image` - name of image to use
-
+### Containers
+Run container:
 ```shell
 docker run -d -p 80:80 image
 ```
 
-### First look at the Dashboard
-The dashboard is stunningly simple. I can see that I have a container running along with the original repo. I'm going to delete all of these and attempt to replicate my environment.
-![docker dashboard](images/docker-dashboard.jpg)
+- `-d` - detatched mode (runs in background)
+- `-p`- map host port 80 to container port 80
+- `image` - name of image to use
 
-### Integrating with ECS
-My current application runs on an EC2 image. I was very happy to read how simple it is to integrate docker with aws.
-
->AWS and Docker have collaborated to make a simplified developer experience that enables you to deploy and manage containers on Amazon ECS directly using Docker tools. You can now build and test your containers locally using Docker Desktop and Docker Compose, and then deploy them to Amazon ECS on Fargate.
-
-This is exactly what I need.
-
-My first step is to install the amazonlinux image. 
-
+Stop container:
 ```shell
-docker pull amazonlinux
+docker stop container_name
 ```
 
-You can view your new image by clicking the "Images" tab. 
-![docker image](images/new-image.jpg)
-
-Run a new container by 
+List all running containers:
 ```shell
-docker run -d -p
+docker container ls
+```
+
+Rename a container:
+```shell
+docker rename my_container new_container
+```
 
