@@ -15,4 +15,4 @@ Everything needs to work together seamlessly using what I currently consider as 
 
 ## WTF is Docker? - Incomplete
 I've heard it mentioned everywhere, but i've never understood why I would want to use it. Here is my quest to go from completely oblivious to hopefully competant.
-[Getting started with docker](tutorials/getting-started-with-docker)
+[Getting started with docker](tutorials/docker/setup)
