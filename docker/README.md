@@ -1,4 +1,5 @@
 # Getting Started With Docker
+Looking for quick answers? Checkout the [cheatsheet](cheatsheet.md)
 
 ## My Problem
 CentOS has recently undergone a shift, and will no longer be the cool OS I thought it was going to be. This is great\* because I just finished deploying my application on a new CentOS 8 instance, and spent a lot of time configuring apache, php-fpm, and all my other dependencies. 
@@ -23,4 +24,5 @@ Configurations are applied to your images through a `Dockerfile` which may inclu
 ## docker-compose
 Docker compose is a YAML file that can automatically build your whole development environment using multiple images. Here you can specify volumes to persist data, networks so conatiners can communicate, and more. 
 
-
+#1. How to Set Up Docker
+- [Building the local environment](setup)
