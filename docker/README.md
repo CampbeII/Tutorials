@@ -24,5 +24,5 @@ Configurations are applied to your images through a `Dockerfile` which may inclu
 ## docker-compose
 Docker compose is a YAML file that can automatically build your whole development environment using multiple images. Here you can specify volumes to persist data, networks so conatiners can communicate, and more. 
 
-#1. How to Set Up Docker
+# 1. How to Set Up Docker
 - [Building the local environment](setup)
