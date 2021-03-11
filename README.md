@@ -3,7 +3,7 @@ I like to document my process when learing new concepts. This is a collection of
 
 **Warning:** I write these for mostly for myself therefore the language contained may be offensive to some. 
 
-## Virtualizing my AWS workflow
+## 1. Virtualizing my AWS workflow With Docker
 After chatting with ~~wizards~~ senior engineers I realized my workflow sucks. In order to make it suck less, I need to separate my workflow into:
 
 - A production environment on AWS
@@ -12,6 +12,5 @@ After chatting with ~~wizards~~ senior engineers I realized my workflow sucks. I
 
 Everything needs to work together seamlessly using what I currently consider as **black magic**. 
 
-## Step 1 Learn & Setup Docker
-I've heard it mentioned everywhere, but i've never understood why I would want to use it. Here is my quest to go from completely oblivious to hopefully competant.
-[Getting started with docker](docker/setup.md)
+I've heard it mentioned everywhere, but i've never understood why I would want to use it. 
+Here is my quest to go from completely oblivious to hopefully competant using docker.  [Getting started with docker](docker/README.md)
