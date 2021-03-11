@@ -1,67 +1,55 @@
-# My Environment
-In order to replicate my current environment i'm going to pull some images from docker hub.'
+# Pull the Official Images
+In order to replicate my current environment i'm going to pull the official images from docker hub.
 
 ```shell
 docker pull amazonlinux;
 docker pull mysql;
 docker pull minio/minio;
 docker pull php
-docker pull rust
 docker pull nginx
 ```
-Verify the images are all there with:
+## Build A Folder Structure
+Create the directory structure that will contain our environemnt. This command will:
+- `mkdir env;` - Make a directory called "env".
+- `cd env` - Change the "env directory".
+
+There are quicker ways to do this, but I want to keep it simple.
 
 ```shell
-docker images
+mkdir env; 
+cd env;
+mkdir nginx;
+mkdir php;
+mkdir mysql;
+
 ```
-## Container Networking
-Reference: [Documentation](https://docs.docker.com/get-started/07_multi_container/)
+## Docker Compose
+Docker compose is a simple yaml file that will automatically run our images, configure networking, and setup volumes. In the `env` directory open up `docker-compose.yml` with your favourite text editor.
+```yaml
+version: "3.9"
 
-1. Create the network
-
-```shell
-docker network create network-name
-```
-2. Start a MySQL container and attach it to the network. On make sure to use back ticks on windows.
-
-```shell
-docker run -d \
-    --network cm-network --network-alias mysql \
-    --name mysql \ 
-    -v mysql-data:/var/lib/mysql \
-    -e connection
-```
-- `--network` - specifies the network we built
-- `--network-alias` - label our network
-- `--name` - label container
-- `-v`  - bind & mount a volume
-- `--env-file` - set an environment variable file named connection
-
-## Connect to the image
-List all the current docker processes to determine the ID of mysql
-```shell
-docker container ls
-
-CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                 NAMES
-86dfaefef6f5   mysql     "docker-entrypoint.s"   21 minutes ago   Up 21 minutes   3306/tcp, 33060/tcp   mysql
+services:
+    webserver: 
+        image: nginx
+        container_name: webserver
+        volumes:
+            - ./nginx/sites:/var/www/sites
+        ports:
+            - 80:80
+            - 443:443
+        depends on:
+            - php
+    php:
+        image: php:fpm
+        container_name: php
+        volumes:
+            - ./nginx/sites:/var/www/sites
+        ports:
+            - 9000:9000
 ```
 
-Launch an interactive shell:
-```shell
-docker exec -it ID mysql -p
-```
+## Setup PHP
+Working on it!
 
-## Persisting data using Volumes
-Reference: [Documentation](https://docs.docker.com/storage/volumes/)
-
-Create volume
-```shell
-docker volume create linux-data
-docker volume ls
-docker volume rm linux-data
-```
-- Helps data persist
-- When you run a container and specifiy a volume that does not exist, it will be created.
-
-
-
+## Setup MySQL
+Inside our `mysql` directory.
