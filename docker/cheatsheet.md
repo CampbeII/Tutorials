@@ -20,9 +20,9 @@ An operating system or program.
 ## Networking
 Creating a network will allow containers to talk to each other.
 
-- `docker netework create NETWORK-NAME` - Create a network with label
-- `docker netework rm NETWORK-NAME` - Remove network
-- `docker netework ls` - List networks
+- `docker network create NETWORK-NAME` - Create a network with label
+- `docker network rm NETWORK-NAME` - Remove network
+- `docker network ls` - List networks
 
 ## Volumes
 Volumes help you share data with your host or other containers.
