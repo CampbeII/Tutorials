@@ -25,6 +25,7 @@ Note that prompts can be run as a regular user or an admin user.
 ## Searching
 `findstr` - find string
 
-
 ## Processes
-`tasklist` - running processes
+`tasklist /SVC | findstr flag` - running processes. The svc allows for more information.
+
+`Get-Service | findstr flag` - Powershell alternative to tasklist`
