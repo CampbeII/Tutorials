@@ -8,11 +8,13 @@
 
 `nmap -h` - View command help.
 
-`file bin` - locate help about a file.
+`apropos` - Find commands using keywords.
+
+`uname -a` - Operating system information used to determine if an exploit is available.
+
+`file bin` - Locate help about a file.
 
 `history` - Command history.
-
-`apropos` - Can find commands with keywords
 
 `whereis` - locates programs.
 
@@ -21,7 +23,6 @@
 
 `id` - user and group names. Root users are 0, regular start at 1000
 
-`uname -a` - Operating system information used to determine if an exploit is available.
 
 `sudo -l` - All root commands.
 
