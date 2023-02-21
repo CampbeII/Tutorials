@@ -17,3 +17,15 @@
 `/usr` - User binaries & libraries.
 
 `/home` - User`s directories.
+
+`/dev` - Device drivers.
+
+`/lib` - Shared libraries.
+
+`/boot` - Boot files.
+
+`/mnt` - Media mount points.
+
+`/proc` - System Processes.
+
+`/tmp` - Temporary globally readable files.
