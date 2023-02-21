@@ -5,8 +5,8 @@ In order to replicate my current environment i'm going to pull the official imag
 docker pull amazonlinux;
 docker pull mysql;
 docker pull minio/minio;
-docker pull php
-docker pull nginx
+docker pull php;
+docker pull nginx;
 ```
 ## Build A Folder Structure
 Create the directory structure that will contain our environemnt. This command will:

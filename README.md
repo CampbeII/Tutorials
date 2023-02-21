@@ -1,8 +1,6 @@
 # Tutorials
 I like to document my process when learing new concepts. This is a collection of "how tos" and tutorials that i've written for myself. 
 
-**Warning:** I write these for mostly for myself therefore the language contained may be offensive to some. 
-
 ## 1. Virtualizing my AWS workflow With Docker
 After chatting with ~~wizards~~ senior engineers I realized my workflow sucks. In order to make it suck less, I need to separate my workflow into:
 
