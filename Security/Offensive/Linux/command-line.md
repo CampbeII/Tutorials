@@ -14,7 +14,7 @@
 
 `file bin` - Locate help about a file.
 
-`history` - Command history.
+`history` - Command history. Access with `!100` 
 
 `whereis` - locates programs.
 
