@@ -28,3 +28,20 @@
 `nmap -sV sC -vvv 192.168.1.1` - common scan
 
 `--script vuln` - Checks against common vulnerabilities. 
+
+## Scan a Range of IP Addresses and output them to a text file
+`nmap 192.168.1.1/24 -sn -n -oG - | awk '/Up$/{print $2}' > ip-list.txt`
+
+`-n` - Don't resolve DNS.
+
+`-sn` - ping scan, no ports.
+
+`-oG -` - sends "grepable" output to stdout, which gets piped to awk.
+
+`/Up$/` - Regex to select lines which end with "Up"
+
+`{print $2}` - print the second whitespace (ip address)
+
+`> ip-list.txt` - Output to file
+
+
