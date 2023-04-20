@@ -43,5 +43,3 @@
 `{print $2}` - print the second whitespace (ip address)
 
 `> ip-list.txt` - Output to file
-
-
