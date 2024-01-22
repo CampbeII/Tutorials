@@ -10,13 +10,21 @@
 
 `apropos` - Find commands using keywords.
 
-`uname -a` - Operating system information used to determine if an exploit is available.
 
 `file bin` - Locate help about a file.
 
 `history` - Command history. Access with `!100` 
 
 `whereis` - locates programs.
+
+# System Information
+`cat /etc/os-release` - Name, Version, ID, Support URL
+
+`uname -a` - Operating system information used to determine if an exploit is available.
+
+`lsb_release -a` - Distributor ID, Description Release, Codename
+
+`hostnamectl` - hostname, machine id, boot id, os, kernel, architecture
 
 ## User information
 `whoami` - display current user information.
@@ -43,6 +51,9 @@
 `grep -rnw / -e 'password'` - Search line by line and match an expression.
 
 ## Processes
-`ps aux` - print all running processes from all users.
+`ps -aux` - print all running processes from all users.
 
 `crontab` - List of scheduled jobs.
+
+## Networking
+`ifconfig` or `ipaddr` - view network addressing
