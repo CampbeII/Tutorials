@@ -12,7 +12,7 @@ Note that prompts can be run as a regular user or an admin user.
 ## User Information
 `echo %username%` - View loggen in user name.
 
-`whami /all` - all user information.
+`whoami /all` - all user information.
 
 `net user administration` - account information.
 
