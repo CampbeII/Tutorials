@@ -25,9 +25,9 @@
 
 `-a` - Aggressive scan.
 
-`nmap -sV sC -vvv 192.168.1.1` - common scan
-
 `--script vuln` - Checks against common vulnerabilities. 
+
+`nmap -sV -sC -vvv 192.168.1.1` - Service version, default scripts, all output.
 
 ## Scan a Range of IP Addresses and output them to a text file
 `nmap 192.168.1.1/24 -sn -n -oG - | awk '/Up$/{print $2}' > ip-list.txt`

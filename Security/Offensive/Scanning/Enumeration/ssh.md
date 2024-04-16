@@ -2,7 +2,6 @@
 - Port 22
 - Asymmetric encryption uses key pairs (public / private)
 `-N` - Does not show the login prompt
-
  
 ## Files
 SSH Keys are typically stored in a user's home directory.'
@@ -21,14 +20,11 @@ You can send individual commands:
 
 `ssh root@10.10.10.10 cat /etc/passwd`
 
-
 ## Remote Port Forwarding
 ```sh
 ssh -R remote_port:localhostlocal_port:
 ssh_server_hostname
 ```
-
-
 
 # Local Port Forwarding
 The syntax for local port forwarding with SSH is:
@@ -37,7 +33,6 @@ The syntax for local port forwarding with SSH is:
 ssh -L local_port:dest_server_ip:remote_port ssh_user@ssh_hostname
 ssh -L 1234:11.11.11.11:80 root@10.10.10.10
 ```
-
 
 ## Scan host
 `nmap 10.10.10.10 -sV -p22
@@ -69,7 +64,6 @@ ssh -L 1234:11.11.11.11:80 root@10.10.10.10
 ```
 
 Access http://localhost:1234 to access this internal service running on port 80
-
 
 # Dynamic Port Forwarding
 View the configuration file for proxy chains, and take note of the addressing:

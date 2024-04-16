@@ -1,6 +1,6 @@
 # Webserver Enumeration
 
-Scan for common vulnerabilities using nmap or nikto. 
+Scan for common vulnerabilities using nmap.
 ```
 nmap -sV -sC 192.168.1.1 --script=vuln -p 80
 ```
