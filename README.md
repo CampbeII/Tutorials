@@ -8,7 +8,5 @@ After chatting with ~~wizards~~ senior engineers I realized my workflow sucks. I
 - A development environment (hosted locally)
 - A private repo on GitHub
 
-Everything needs to work together seamlessly using what I currently consider as **black magic**. 
-
 I've heard it mentioned everywhere, but i've never understood why I would want to use it. 
 Here is my quest to go from completely oblivious to hopefully competant using docker.  [Getting started with docker](docker/README.md)
