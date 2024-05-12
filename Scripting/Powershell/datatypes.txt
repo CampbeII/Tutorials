@@ -1,0 +1,12 @@
+Type casting
+Convert a single value to specific type.
+$var = [int] 1.3
+
+Static members
+Access members thaht live on the type itself
+[Math]::Round(11.25)
+
+Strong typing
+Force a variable to only contain a certain type
+[int] $var = 123.4 
+$var = 'this will fail'
