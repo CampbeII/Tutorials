@@ -8,6 +8,7 @@
 /*
 Multi line comment
 */
+```
 
 ## Variables
 ```php
@@ -31,7 +32,7 @@ echo $array_0[-1];
 
 ## Loops
 ```php
-for ($i = 0; $i < $array_0.length; $i++) {
+for ($i = 0; $i < count($array_0); $i++) {
     echo $array_0[$i];
 }
 
@@ -134,7 +135,8 @@ You are 385 in dog years
 ## Debugging
 ```php
 // print strings and numbers
-print $var
+print $var;
+echo $var;
 
 // print arrays
 print_r($my_array);
@@ -156,4 +158,3 @@ echo $details;
 
 // John Smith, 123 street
 ```
-
