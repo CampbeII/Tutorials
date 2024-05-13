@@ -24,12 +24,12 @@ $ip_address = $_SERVER['REQU
 ## Arrays
 ```php
 $array_0 = [1,2,3];
-$array_1 = array("one", "two", "three");
+$array_1 = ["one", "two", "three"];
+
 $assoc_array = [
     "name" => "john",
     "age" => 90,
 ];
-
 
 # First Value
 echo $array_0[0];
@@ -37,28 +37,37 @@ echo $array_0[0];
 # Last Value
 echo $array_0[-1];
 
-# Deconstruct
-list($a, $b, $c) = $array_0;
-# $a = 1
-# $b = 2
-# $c = 3
+# Skip elements
+[, , $c] = $array_0; // $c = 3
+```
+
+### Deconstructing Arrays
+```php
+list($a, $b, $c) = $array_0; 
+[$a, $b, $c] = $array_0;
+
+// $a = 1 $b = 2 $c = 3
 
 # Associative Arrays
 list('name' => $a, 'age" => $b) = $assoc_array;
-# $a = 'john'
-# $b = 90
-
-# Shorthand
-[$a, $b, $c] = $array_0;
 ['name' => $a, 'age" => $b] = $assoc_array;
 
-# Skip elements
-[, , $c] = $array_0;
-# $c = 3
+// $a = 'john' $b = 90
+```
 
-# Null Coalescing
-$a = ['name' => 'john'];
-$b = $a['name'] ?? 'Please enter name';
+### Unpacking Arrays
+```php
+$result = ['zero', ...$array_1, 'four'] // ['zero', 'one', 'two', 'three', 'four']
+
+# Associative Arrays
+$assoc_array_1 = [
+    "colour" => "green",
+];
+
+$result = [
+    ...$assoc_array_0,
+    'colour' => 'green',
+];
 ```
 
 ## Loops
@@ -68,7 +77,7 @@ for ($i = 0; $i < count($array_0); $i++) {
 }
 
 foreach ($array_0 as $num) {
-    print_r($num);
+    echo $num;
 }
 
 // Reverse Loops are fast
@@ -130,9 +139,32 @@ $b = $a ?: 'fallback';
 *
 * @returns string - Greeting.
 
-function say_hello(string $name = 'john'):string {
+function say_hello(string $name = 'john'):string 
+{
     echo "Hello $name!";
 }
+
+/**
+* Variadic functions 
+- Pass a variable number of parameters
+- Must be the end
+*/
+function variadic_func(string $param, string ...$options)
+{
+    return count($options);
+}
+
+variadic_funct('test0', 'one'); // 0
+variadic_funct('test1', 'one', 'two', 'three'); // 2
+
+# UnPacking
+function unpacker(int $a, int $b, int $c): int
+{
+    return $a + $b + $c;
+}
+
+$array = [2,3,4,5];
+$result = unpacker(1, ...$array); // a = 1 + b = 2 + c = 3
 ```
 
 ## Classes
@@ -173,13 +205,26 @@ class User {
     }
 }
 
-class Player extends User
-{
-}
-
+# New class
 $John = new User('John', 55);
+
+# Set variable
 $John->is_happy = true;
+
+# Call function
 $John->get_dog_years(); // You are 385 in dog years
+
+# Nullsafe
+$John?->is_happy
+
+# Named Parameters
+class User {
+    public function __construct( public string $name, public int $age)
+    {
+        // $this->name = $name is not needed in this case
+    }
+}
+$John = new User(name: "john", age: 90);
 ```
 
 ## Debugging
@@ -207,4 +252,16 @@ $details .= $address;
 echo $details;
 
 // John Smith, 123 street
+```
+
+## Enums
+```php
+enum Status {
+    case HIGH;
+    case MEDIUM;
+    case LOW;
+}
+if ($var === Status::HIGH) {
+ // High sev
+}
 ```
