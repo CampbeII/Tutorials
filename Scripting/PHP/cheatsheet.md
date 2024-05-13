@@ -14,20 +14,51 @@ Multi line comment
 ```php
 $string_var = (string) "test";
 $int_var = (int) 5;
-$post_var = $_POST;
-$my_array = [];
+
+# Global
+$post_var = $_POST['input_field_name'];
+$get_var = $_GET['url_parameter'];
+$ip_address = $_SERVER['REQU
 ```
 
 ## Arrays
 ```php
 $array_0 = [1,2,3];
 $array_1 = array("one", "two", "three");
+$assoc_array = [
+    "name" => "john",
+    "age" => 90,
+];
 
-// First Value
+
+# First Value
 echo $array_0[0];
 
-// Last Value
+# Last Value
 echo $array_0[-1];
+
+# Deconstruct
+list($a, $b, $c) = $array_0;
+# $a = 1
+# $b = 2
+# $c = 3
+
+# Associative Arrays
+list('name' => $a, 'age" => $b) = $assoc_array;
+# $a = 'john'
+# $b = 90
+
+# Shorthand
+[$a, $b, $c] = $array_0;
+['name' => $a, 'age" => $b] = $assoc_array;
+
+# Skip elements
+[, , $c] = $array_0;
+# $c = 3
+
+# Null Coalescing
+$a = ['name' => 'john'];
+$b = $a['name'] ?? 'Please enter name';
 ```
 
 ## Loops
@@ -80,11 +111,14 @@ switch ($colour) {
         echo "blue it is";
 }
 
-// Shorthand
-$is_on = true;
-$status = $is_on ? 'The light is on' : 'The light is off';
 
-$fire = $is_on ?? false;
+# Null Coalescing
+$a = null;
+$b = $a ?? 'fallback';
+$b = isset($a) ? $a : 'fallback';
+
+# Ternary
+$b = $a ?: 'fallback';
 ```
 
 ## Functions
@@ -96,7 +130,7 @@ $fire = $is_on ?? false;
 *
 * @returns string - Greeting.
 
-function say_hello(string $name):string {
+function say_hello(string $name = 'john'):string {
     echo "Hello $name!";
 }
 ```
@@ -111,6 +145,10 @@ class User {
 
     public string $first_name;
     public int $age;
+    public bool $is_happy;
+    public string|int|array $possible;
+
+    private User&Player $intersection;
 
     function __construct(string $first_name, int $age)
     {
@@ -119,17 +157,29 @@ class User {
         $this->dog_years = $age * 7;
     }
 
-    functionn dog_years(): void
+    functionn get_dog_years(): void
     {
         print "You are $this->dog_years in dog years";
     }
+
+    function possible(string|int|array $var): string|int|array
+    {
+        return $var;
+    }
+
+    function intersections(User&Player $scope): User&Player
+    {
+        return $scope;
+    }
 }
 
-$User = new User('John', 55);
-$User->dog_years();
+class Player extends User
+{
+}
 
-//Output
-You are 385 in dog years
+$John = new User('John', 55);
+$John->is_happy = true;
+$John->get_dog_years(); // You are 385 in dog years
 ```
 
 ## Debugging
