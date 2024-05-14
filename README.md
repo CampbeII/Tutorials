@@ -15,11 +15,13 @@ Here is my quest to go from completely oblivious to hopefully competant using do
 Explore the techniques involved in attacking organizations, anti-virus evaison, and malware development from a red team perspective. 
 
 
-- [Preparation](Security/Offensive/Preparation/README.md)
-- [Scanning](Security/Offensive/Scanning/)
-- [Exploitation](Security/Offensive/Exploitation/)
-- [Persistance](Security/Offensive/Persistance/)
-- [Cheatsheets](Security/Offensive/Cheatsheets/)
+| Offensive | Defensive |
+| --------- | --------- |
+| [Preparation](Security/Offensive/Preparation/README.md) | [Malware](Security/Defensive/Malware) |
+| [Scanning](Security/Offensive/Scanning/) | | 
+| [Exploitation](Security/Offensive/Exploitation/) | | 
+| [Persistance](Security/Offensive/Persistance/) | | 
+| [Cheatsheets](Security/Offensive/Cheatsheets/) | |
 
 ## 3. Scripting
 My cheatsheets for scripting in a variety of languages.
