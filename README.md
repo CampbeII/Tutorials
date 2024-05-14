@@ -11,19 +11,15 @@ After chatting with ~~wizards~~ senior engineers I realized my workflow sucks. I
 I've heard it mentioned everywhere, but i've never understood why I would want to use it. 
 Here is my quest to go from completely oblivious to hopefully competant using docker.  [Getting started with docker](docker/README.md)
 
-## 2. Cyber Security
-Explore common strategies taken by both attackers and defenders.
-
-### 2.1 Offensive Security
+### 2. Offensive Security
 Explore the techniques involved in attacking organizations, anti-virus evaison, and malware development from a red team perspective. 
 
 
-1. [Preparation](Security/Offensive/Preparation/README.md)
-2. [Scanning](Security/Offensive/Scanning/README.md)
-3. [Exploitation](Security/Offensive/Exploitation/README.md)
-4. [Persistance](Security/Offensive/Persistance/README.md)
+- [Preparation](Security/Offensive/Preparation/README.md)
+- [Scanning](Security/Offensive/Scanning/)
+- [Exploitation](Security/Offensive/Exploitation/)
+- [Persistance](Security/Offensive/Persistance/)
+- [Cheatsheets](Security/Offensive/Cheatsheets/)
 
-A [cheatsheet](Security/Offensive/Cheatsheets/README.md) is provide for quick reference.
-
-### 2.2 Defensive Security
+### 3. Defensive Security
 Explore the techniques involved in defending organizations from cyber attacks, malware anaylsis, and detection from a blue team perspective.
