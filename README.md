@@ -18,12 +18,12 @@ Explore common strategies taken by both attackers and defenders.
 Explore the techniques involved in attacking organizations, anti-virus evaison, and malware development from a red team perspective. 
 
 
-    1. [Preparation](Security/Offensive/Preparation/README.md)
-    2. [Scanning](Security/Offensive/Scanning/README.md)
-    3. [Exploitation](Security/Offensive/Exploitation/README.md)
-    4. [Persistance](Security/Offensive/Persistance/README.md)
+1. [Preparation](Security/Offensive/Preparation/README.md)
+2. [Scanning](Security/Offensive/Scanning/README.md)
+3. [Exploitation](Security/Offensive/Exploitation/README.md)
+4. [Persistance](Security/Offensive/Persistance/README.md)
 
-A [cheatsheets](Security/Offensive/Cheatsheets/README.md) is provide for quick reference.
+A [cheatsheet](Security/Offensive/Cheatsheets/README.md) is provide for quick reference.
 
 ### 2.2 Defensive Security
 Explore the techniques involved in defending organizations from cyber attacks, malware anaylsis, and detection from a blue team perspective.
