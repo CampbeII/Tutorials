@@ -29,6 +29,7 @@ There are multiple ways to enumerate SMB shares.
 net share
 nmap 192.168.1.1 -p 445 -sV -sC --script=smb-enum-shares
 smbclient -L \\192.168.1.1 --option='client min protocol=NT1'
+enum4linux -S 10.10.10.10
 ```
 
 
