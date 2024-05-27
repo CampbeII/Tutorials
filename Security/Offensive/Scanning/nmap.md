@@ -1,4 +1,6 @@
 # NMap
+`nmap -A -p0- 10.10.10.10` - All ports, service version, os, etc
+
 `nmap 192.168.1.1 -vvv` - Single IP address.
 
 `nmap 192.168.1.1/24` - CIDR range.
@@ -51,4 +53,5 @@
 ## Perform a simple port scan
 ```sh
 nmap -p0- 10.10.10.10
+
 ```
