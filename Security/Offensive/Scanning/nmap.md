@@ -25,6 +25,10 @@
 
 `-a` - Aggressive scan.
 
+`-O` - Operating system scan.
+
+`-sO` - Protocol scan.
+
 `--script vuln` - Checks against common vulnerabilities. 
 
 `nmap -sV -sC -vvv 192.168.1.1` - Service version, default scripts, all output.
@@ -43,3 +47,8 @@
 `{print $2}` - print the second whitespace (ip address)
 
 `> ip-list.txt` - Output to file
+
+## Perform a simple port scan
+```sh
+nmap -p0- 10.10.10.10
+```
