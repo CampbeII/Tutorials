@@ -17,7 +17,7 @@ Explore the techniques involved in attacking organizations, anti-virus evaison, 
 
 | Offensive | Defensive |
 | --------- | --------- |
-| [Preparation](Security/Offensive/Preparation/README.md) | [Malware](Security/Defensive/Malware) |
+| [Preparation](Security/Offensive/Preparation/README.md) | [Malware Analysis](Security/Defensive/Malware) |
 | [Scanning](Security/Offensive/Scanning/) | | 
 | [Exploitation](Security/Offensive/Exploitation/) | | 
 | [Persistance](Security/Offensive/Persistance/) | | 
