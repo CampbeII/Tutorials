@@ -1,22 +1,39 @@
 # SMTP Enumeration
-- Simple Mail Transfer Protocol
-- port 25
-- used to send an relay outgoing emails
+This service has two internal commands that allow for the enumeration of users:
 
-1. Recon the target
-- nmap may not give all information
-- The smtp command is not available on default kali, but does offer additional information. 
-- Use nc and the help command to see more information
+| Command | Description |
+| ------- | ----------- |
+| `VRFY` | Confirm valid user names |
+| `EXPN` | Actual address of users alias  & emails |
+
+## 1. Scan ports
+Nmap and Netcat can be used to test common smtp ports
 
 ```sh
 nmap 192.168.1.1 --script=smtp* -p 25
-smtp-user-enum -H VRFY -U users.txt -t 192.168.1.1
 nc -C 192.168.1.1 25 
-> HELP
+smtp-user-enum -H VRFY -U users.txt -t 192.168.1.1
 ```
 
-2. Run the exploit
-When you have determined the server information you can then search for a relevant exploit.
-- This can be done using metasploit and the `search` command
+## Using Metasploit
 
+Scanning for version:
+```sh
+msfconsole
+search smtp_version
+use 0
+options
+set rhosts 10.10.10.10
+exploit
+```
 
+Enumerating Accounts:
+```sh
+back
+search smtp_enumeration
+use 0
+options
+set USER_FILE /usr/shar/wordlists/SecLists/Usernames
+set RHOSTS 10.10.10.10
+exploit
+```

