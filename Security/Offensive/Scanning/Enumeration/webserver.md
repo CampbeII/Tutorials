@@ -5,9 +5,22 @@ Scan for common vulnerabilities using nmap.
 nmap -sV -sC 192.168.1.1 --script=vuln -p 80
 ```
 
-Use dirb to brute force directories. This tool is built into Kali and it's wordlists can be accessed: `/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt`
+# Directory Busting
+A brute force tactic to determine the names of accessible directories.
+
+## DirB
+Built into Kali and it's wordlists can be accessed: `/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt`
+
+Scan a website:
 ```
-dirb http://192.168.1.1
+dirb http://site.com -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+```
+
+## GoBuster
+```sh
+gobuster dir -u http://site.com -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
+
+gobuster dir -u http://site.com/assets -w wordlist.txt -x php,jpg,png
 ```
 
 ## Files of inerest
