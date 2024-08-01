@@ -1,9 +1,9 @@
- Images
+ # Images
 | File type | Typical extension | Hex (var=xx)| Ascii (.=non ascii) |
 | --------- | ----------------- | ----------- | ------------------- | 
 | Bitmap | .bmp | 42 4d | BM |
 | FITS | .fits | 53 49 4d 50 4c 45 | SIMPLE |
-| GIF | .gif | 47 49 46 38 | GIF8 |
+| GIF | .gif | 47 49 46 38 | # GIF8 |
 | Graphics Kernel System | .gks | 47 4b 53 4d GKSM |
 | IRIS rgb | .rgb | 01 da | .. |
 | ITC (CMU WM) | .itc | f1 00 40 bb | .... |
