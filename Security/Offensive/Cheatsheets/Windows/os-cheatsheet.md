@@ -9,6 +9,8 @@
 
 `\Inetpub` - Default web server directory.
 
+`C:\Windows\System32\drivers\etc\hosts` - Hosts file
+
 ## Short file names
 Short file names can be an alternative to character
 Consider the following `dir` output

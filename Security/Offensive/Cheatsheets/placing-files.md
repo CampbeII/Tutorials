@@ -22,4 +22,3 @@ From the target:
 upload shell.exe
 download sensitive-data.txt
 ```
-

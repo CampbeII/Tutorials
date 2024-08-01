@@ -10,6 +10,8 @@
 
 `/etc/shadow` - Secure information.
 
+`/etc/hosts` - Hosts file.
+
 `/var` - Logs
 
 `/var/www` - Apache web server if installed.
@@ -29,3 +31,4 @@
 `/proc` - System Processes.
 
 `/tmp` - Temporary globally readable files.
+
