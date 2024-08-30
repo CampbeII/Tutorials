@@ -9,7 +9,7 @@ SSH Keys are typically stored in a user's home directory.'
 - /home/user/.ssh/id_rsa.pub
 - /home/user/.ssh/authorized_keys
 
-## Restricted Shdll
+## Restricted Shell
 You can avoid shell restrictions by specifying the type of shell when logging in:
 
 `-t` - Specify the type of shell
