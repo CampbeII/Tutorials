@@ -1,75 +1,75 @@
 # Powershell Enumeration
 
 ## All Users
-```ps
+```pwsh
 Get-LocalUser
 Get-ADUser -Filter *
 wmic useraccount get domain,name,sid
 ```
 
 ## Current User
-```ps
+```pwsh
 wmic useraccount where name='%username%' get domain,name,sid
 ```
 
 ## Specific user:
-```ps
+```pwsh
 wmic useraccount where name='username' get sid
 ```
 
 ## Local Groups
-```ps
+```pwsh
 Get-LocalGroup
 ```
 
 ## IP Address
-```ps
+```pwsh
 Get-NetIPAddress
 ```
 
 ## Ports
-```ps
+```pwsh
 Get-NetTcpConnection
 ```
 
 ## Patches
-```ps
+```pwsh
 wmic qfe list
 get-hotfix
 ```
 
 ## Find File
-```ps
+```pwsh
 Get-ChildItem -Path "C:\" -File -Include "*password*" -ErrorAction SilentlyContinue -Recurse -Force`
 ```
 
 ## Find String In File
-```ps
+```pwsh
 findstr /s "API_KEY" C:\*
 ```
 
 ## Processes
-```ps
+```pwsh
 Get-Process
 ```
 
 ## Scheduled Tasks
-```ps
+```pwsh
 Get-ScheduledTask
 ```
 
 ## Get Owner of resource
-```ps
+```pwsh
 Get-Acl
 ```
 
 ## Test Network Connection
-```ps
+```pwsh
 Test-NetConnection localhost -Port 130
 ```
 
 ## LDAP Hierarchical Tree Structure
-```ps
+```txt
     DC=teamname,DC=com
        |           |
     CN=Users    OU=TestUnit
@@ -78,62 +78,62 @@ Test-NetConnection localhost -Port 130
 ```
 You can filter searches using the following:
 
-```ps
+```pwsh
 Get-AdUser -Filter * -SearchBase "CN=Users,DC=teamname,DC=com"
 ```
 
 ## Anti Virus
 Enumerate AV software:
-```ps
+```pwsh
 Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct
 wmic /namespace:\\root\securitycenter2 path antivirusproduct
 ```
 
 
 ## Windows Defender
-```ps
+```pwsh
 Get-Service WinDefend
 ```
 
 Check the status of defender real time protection.
-```ps
+```pwsh
 Get-MpComputerStatus | select RealTimeProtectionEnabled
 ```
 
 ## Host Based Firewall
 Get the status of the host based firewall
-```ps
+```pwsh
 Get-NetFirewallProfile | Format-Table Name, Enabled
 ```
 
 Check Firewall Rules:
-```ps
+```pwsh
 Get-NetFirewallRule | Select DisplayName, Enabled, Description
 ```
 
 To disable the firewall:
-```ps
+```pwsh
 Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
 ```
 
 Test Firewall:
-```ps
+```pwsh
 Test-Connection -ComputerName 10.10.10.10 -Port 80
 ```
 
 Connect:
-```ps
+```pwsh
 (New-Object System.Net.Sockets.TcpClient("10.10.10.10", "80")).Connected
 ```
 
 ## MS Defender
-```ps
+```pwsh
 Get-MpThreat
 ```
 
 ## Sysmon
 The following cmdlets can be used to detect sysmon agent.
-```ps
+```pwsh
 Get-Process | Where-Object { $_.ProcessName -eq "Sysmon"}
 Get-CimInstance win32_service -Filter "Description = 'System Monitor service'"
 Get-Service | Where-Object {$_.DisplayName -like "*sysm*"}
@@ -142,40 +142,40 @@ reg query
 
 ## Event Log
 List available event logs to gain insight into what applications and services are installed.
-```ps
+```pwsh
 Get-EventLog -List
 ```
 
 ## Installed Applications & Processes
 
 List applications and version:
-```ps
+```pwsh
 wmic product get name, version
 ```
 
 List all running services:
-```ps
+```pwsh
 net start
 ```
 
 Retrieve service details:
-```ps
+```pwsh
 wmic service where "name like 'SEARCH STRING'" get Name, PathName
 ```
 
 Process information:
-```ps
+```pwsh
 Get-Process -Name SERVICENAME
 ```
 
 List the listening ports:
-```ps
+```pwsh
 netstat -noa | findstr "LISTENING" | findstr "<PORT IDENTIFIED ABOVE>"
 ```
 
 ## DNS Zone Transfer
 The following commands will performa a DNS zone transfer to retrieve additional DNS information.
-```ps
+```pwsh
 nslookup.exe
 > server 10.10.10.10
 ls -d domain.com
