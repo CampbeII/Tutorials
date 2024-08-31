@@ -34,14 +34,17 @@ Networking
 `arp -a` - Discover other systems on the LAN
 
 ## File Searching
+CMD:
 ```cmd
 dir \s C:\*secrets.txt*
 ```
 
+Powershell:
 ```pwsh
-Get-ChildItem
+Get-ChildItem -Path "C:\" -File -Include "*password*" -ErrorAction SilentlyContinue -Recurse -Force`
 ```
 
+Meterpreter:
 ```sh
 search -f secrets.txt
 ```
