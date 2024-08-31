@@ -33,5 +33,17 @@ Networking
 `netstat -abno` - All ports, Binary, No resolve, output PID
 `arp -a` - Discover other systems on the LAN
 
+## File Searching
+```cmd
+dir \s C:\*secrets.txt*
+```
+
+```pwsh
+Get-ChildItem
+```
+
+```sh
+search -f secrets.txt
+```
 ## Insecure Service Permissions
 `D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BU)`
