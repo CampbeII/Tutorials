@@ -21,9 +21,13 @@
 
 
 ## Common Flags
-`-sC` - default scripts
+`-sC` - use default nmap scripts
 
-`-sV` - service version
+`-sS` - TCP SYN port scan
+
+`-sU` - UDP port scan
+
+`-sV` - get service versions.
 
 `-a` - Aggressive scan.
 
