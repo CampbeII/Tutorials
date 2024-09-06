@@ -59,3 +59,8 @@
 nmap -p0- 10.10.10.10
 
 ```
+
+## SMB Enumeration
+```sh
+nmap 10.10.10.10 -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse
+```

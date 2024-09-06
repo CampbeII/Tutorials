@@ -162,6 +162,7 @@ When the tar command expands these files they will be executed as options.
 Find all SUID/SGID executables and look to see if their versions can be exploited:
 ```sh
 find / -user root -perm -4000 -exec ls -ldb {} \;
+find / -perm -u=s -type f 2>/dev/null
 find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
 ```
 

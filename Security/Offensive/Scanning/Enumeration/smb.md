@@ -27,11 +27,13 @@ There are multiple ways to enumerate SMB shares.
 
 ```
 net share
+
 nmap 192.168.1.1 -p 445 -sV -sC --script=smb-enum-shares
+nmap 10.10.10.10 -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse
+
 smbclient -L \\192.168.1.1 --option='client min protocol=NT1'
 enum4linux -S 10.10.10.10
 ```
-
 
 ## Enumrate Users RPCClient
 We can use this to enumerate the server, users and domain users on the system.
@@ -48,6 +50,11 @@ Connect with user:
 ## Brute Force with Hydra
 Bruce force an account with the following command:
 `hydra -l IEUSER -P ~/Desktop/passwords.lst 192.168.1.1 smb`
+
+## Downloading Files
+```sh
+smbget -R smb://10.10.10.10/SHARENAME
+```
 
 
 ## Enumeration Demo
