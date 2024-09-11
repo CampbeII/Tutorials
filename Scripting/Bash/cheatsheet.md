@@ -79,3 +79,59 @@ function_name() {
 function_name "arg1" "arg2"
 ```
 
+## Looping over files
+```sh
+for file in *
+do
+    echo $file
+done
+```
+
+## Reading from Files
+Read from files line by line:
+1. The quick and dirty
+```sh
+while read line
+do
+    echo "$line"
+done < my_filename.txt
+```
+
+2. Safer method
+
+Advantages:
+- doesn't trim leading whitespace
+- ignores backslashes
+- returns last line regardless of `LF` character
+
+```sh
+while IFS="" read -r line || [ -n "$line" ]
+do
+    echo $line
+done < my_filename.txt
+```
+
+### Using a delimiter
+Separate a string using a delimiter.
+```sh
+IFS=':' read -ra line <<< my_filename.txt
+
+for i in "${line[@]}"
+do
+    echo $i
+done
+```
+
+## Counting Strings
+Get the length of a string
+```sh
+test='This is my string'
+echo ${#test}
+```
+
+## Decoding
+
+URL decode
+```sh
+function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+```
