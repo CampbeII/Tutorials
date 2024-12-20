@@ -5,10 +5,10 @@ Scan for common vulnerabilities using nmap.
 nmap -sV -sC 192.168.1.1 --script=vuln -p 80
 ```
 
-# Directory Busting
+## Directory Busting
 A brute force tactic to determine the names of accessible directories.
 
-## DirB
+### DirB
 Built into Kali and it's wordlists can be accessed: `/usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt`
 
 Scan a website:
@@ -16,7 +16,7 @@ Scan a website:
 dirb http://site.com -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
 ```
 
-## GoBuster
+### GoBuster
 ```sh
 gobuster dir -u http://site.com -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt
 
@@ -35,3 +35,13 @@ Could reveal hints about technologies, links, or comments
 - check session cookies
 - check the network tab
 
+## VHOST Fuzzing
+If you receive a destination unreachable try to add an entry to `/etc/hosts`
+```sh
+10.10.10.10     domaintoresolve.odd     test
+```
+
+Use gobuster to enumerate
+```sh
+gobuster vhost --url 10.10.10.10 --wordlist /usr/share/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain
+```

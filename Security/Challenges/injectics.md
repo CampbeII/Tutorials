@@ -2,6 +2,15 @@
 
 target='http://10.10.10.10'
 
+while IFS='' read name
+do
+    attemtp=$(curl -sL "target$name" -w %{http_code})
+    code=${attempt: -3}
+    if [[ "$code" == "200" ]]
+    then
+        echo "name" >> enumerated_files.txt
+    fi
+done < /usr/share/wordlists/SecLists/Discovery/Web-Content/quickhits.txt
 # PAGES
 
 ## LOGIN

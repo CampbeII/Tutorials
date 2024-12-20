@@ -54,3 +54,10 @@ Brute force an account using hydra
 ```sh
 hydra -l admin -P password-list.lst 192.168.1.1 ftp
 ```
+
+## Interception
+| Code | Description |
+| ---- | ----------- |
+| 530 | Failed login |
+| 230 | User logged in |
+| 331 | Username ok, password needed |
