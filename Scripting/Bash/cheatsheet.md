@@ -78,6 +78,15 @@ function_name() {
 # Call function with arguments
 function_name "arg1" "arg2"
 ```
+# Files
+Common snippets for working with files.
+
+## File exists
+```sh
+if [ ! -f /tmp/filename ]; then
+    echo "File not found!"
+fi
+```
 
 ## Looping over files
 ```sh
@@ -89,6 +98,7 @@ done
 
 ## Reading from Files
 Read from files line by line:
+
 1. The quick and dirty
 ```sh
 while read line
@@ -120,13 +130,36 @@ for i in "${line[@]}"
 do
     echo $i
 done
+
 ```
 
-## Counting Strings
+### CSV
+```sh
+while IFS="," read A B C D E F; do
+    # skip headers
+    if [[ "$A" == "Header Column Name" ]]; then
+        continue
+    fi
+```
+
+# Strings
+
+## Counting
 Get the length of a string
 ```sh
 test='This is my string'
 echo ${#test}
+```
+
+## Explode
+```sh
+og_string='10.10.10.10/24 11.11.11.11/24 12.12.12.12/24'
+ips=($og_string)
+
+for ip in ${ips[@]}
+do
+    echo $ip
+done
 ```
 
 ## Decoding
