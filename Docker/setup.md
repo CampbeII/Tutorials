@@ -26,14 +26,13 @@ mkdir mysql;
 ## Docker Compose
 Docker compose is a simple yaml file that will automatically run our images, configure networking, and setup volumes. In the `env` directory open up `docker-compose.yml` with your favourite text editor.
 ```yaml
-version: "3.9"
-
 services:
-    webserver: 
+    nginx: 
         image: nginx
-        container_name: webserver
+        container_name: nginx
         volumes:
             - ./nginx/sites:/var/www/sites
+            - ./nginx:/etc/nginx/nginx.conf
         ports:
             - 80:80
             - 443:443
@@ -53,3 +52,14 @@ Working on it!
 
 ## Setup MySQL
 Inside our `mysql` directory.
+
+### Export
+```sh
+docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE --no-tablespaces > backup.sql
+```
+
+### Import:
+```sh
+cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root --no-tablespaces DATABASE
+```
+
