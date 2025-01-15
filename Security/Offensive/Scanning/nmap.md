@@ -14,25 +14,18 @@ An `nmap` scan will go through the following process:
 9. Write Output
 
 ## Cheatsheet
-`nmap -A -p0- 10.10.10.10` - All ports, service version, os, etc
-
-`nmap 192.168.1.1/24` - CIDR range.
-
-`nmap 192.168.1.1-100` - Custom range.
-
-`nmap -iL ip-list.txt` - Use a source file.
-
-`nmap 192.168.1.1 -sU ` - Scan UDP 
-
-`nmap 192.168.1.1 -Pn` - No ping scan treats all hosts as "up" if regular ICMP does not work.
-
-`nmap 192.168.1.1 -oA` - A gets all outputs.
-
-`nmap 192.168.1.1 -T 5` - Scan timing. O (stealth) -> 5 (intense)
-
-`nmap --reason -vvv -d ` - Reasoning, verbose, debugging information
-
-`sudo nmap -sS -Pn -p- -T5 10.10.10.10` - Fast way to scan entire range. Good for CTF
+| Command | Description |
+| ------- | ----------- |
+| `nmap -A -p0- 10.10.10.10` | All ports, service version, os, etc |
+| `nmap 192.168.1.1/24` | CIDR range. |
+| `nmap 192.168.1.1-100` | Custom range. |
+| `nmap -iL ip-list.txt` | Use a source file. |
+| `nmap 192.168.1.1 -sU ` | Scan UDP |
+| `nmap 192.168.1.1 -Pn` | No ping scan treats all hosts as "up" if regular ICMP does not work. |
+| `nmap 192.168.1.1 -oA` | A gets all outputs. |
+| `nmap 192.168.1.1 -T 5` | Scan timing. O (stealth) -> 5 (intense) |
+| `nmap --reason -vvv -d ` | Reasoning, verbose, debugging information |
+| `sudo nmap -sS -Pn -p- -T5 10.10.10.10` | Fast way to scan entire range. Good for CTF |
 
 
 ## Common Flags
