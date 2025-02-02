@@ -18,6 +18,20 @@ var2='B'
 ```sh
 myArray=("cat" "dog" "lizard")
 
+# Add to Array
+myArray+="african swallow"
+
+# Edit Array
+myarray[0]="cats"
+
+# Last Value
+${myArray[-1]}
+
+# Is Empty
+if [ ${#errors[@]} -eq 0 ]; then
+    echo "empty"!
+fi
+
 # Loop over values
 for str in ${myArray[@]}; do
     echo $str
@@ -35,6 +49,18 @@ done
 if [ string1 == string2 ]; then
     echo "matched"
 fi
+```
+
+Case statement:
+```sh
+case "$response" in 
+    "error")
+        echo "error";;
+    "success")
+        echo "success";;
+    "pause")
+        echo "paused";;
+esac
 ```
 
 ## Functions
