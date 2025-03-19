@@ -47,6 +47,8 @@ An `nmap` scan will go through the following process:
 
 `-p0-` - All ports.
 
+`-Pn` - Skip host discovery.
+
 `nmap -sV -sC -vvv 192.168.1.1` - Service version, default scripts, all output.
 
 ## Saving Output

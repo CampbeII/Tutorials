@@ -32,3 +32,8 @@
 
 `/tmp` - Temporary globally readable files.
 
+`/sys` -  Information about the kernel's view of the system.
+
+`kernel` - BIOS/UEFI -> Boot loader -> linux kernel
+
+`user space` - Anything outside the kernel

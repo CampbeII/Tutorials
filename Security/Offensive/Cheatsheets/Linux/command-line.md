@@ -25,6 +25,32 @@
 `lsb_release -a` - Distributor ID, Description Release, Codename
 
 `hostnamectl` - hostname, machine id, boot id, os, kernel, architecture
+`free` - View memory allocation
+
+`df -h` - Free disk space in human readable format
+
+## System Logs
+`dmesg` - Kernel logs
+
+`journalctl` - stdout / stderr of services, syslog, kernel logs. 
+
+`journalctl -r` - View results in reverse order (newest -> oldest)
+
+`journalctl -f` - Follow file by updating as new lines are added.
+
+`journalctl -u ssh.service` - Limit to a service.
+
+
+## Hardware Discovery
+`lspci` - Summarize detected hardware details.
+
+`lsusb` - List USB devices.
+
+`lspcmcia` - List PCMICIA cards.
+
+`lsdev` - Communication resources used by devices.
+
+`lshw` - A combination of all tools. Great for reports.
 
 ## User information
 `whoami` - display current user information.
@@ -41,9 +67,9 @@
 
 `strings binaryfile` - show printable characters.
 
-`cat filename.txt | head -n 5` - show first 5 liens.
+`cat filename.txt | head -n 5` - show first 5 lines.
 
-`cat filename.txt | tail -n 5` - show last 5 liens.
+`cat filename.txt | tail -n 5` - show last 5 lines.
 
 ## Searching
 | Command | Description |
