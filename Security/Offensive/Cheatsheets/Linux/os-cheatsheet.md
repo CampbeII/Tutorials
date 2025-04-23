@@ -37,3 +37,7 @@
 `kernel` - BIOS/UEFI -> Boot loader -> linux kernel
 
 `user space` - Anything outside the kernel
+
+`jobs -l` - List current jobs
+
+`kill %2` - Kill task

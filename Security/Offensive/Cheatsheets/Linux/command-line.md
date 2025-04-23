@@ -20,12 +20,15 @@
 # System Information
 `cat /etc/os-release` - Name, Version, ID, Support URL
 
-`uname -a` - Operating system information used to determine if an exploit is available.
+`uname -a` - Operating system information.
 
 `lsb_release -a` - Distributor ID, Description Release, Codename
 
 `hostnamectl` - hostname, machine id, boot id, os, kernel, architecture
-`free` - View memory allocation
+
+`uname -r` -  Running Kernel
+
+`free` - Free memory 
 
 `df -h` - Free disk space in human readable format
 
@@ -40,9 +43,12 @@
 
 `journalctl -u ssh.service` - Limit to a service.
 
-
 ## Hardware Discovery
 `lspci` - Summarize detected hardware details.
+
+`lspci | grep Ethernet` -  Networking Adapter Information
+
+`lspci -v -s 'lspci | grep VGA | cut -fi -d\'` - Graphics card
 
 `lsusb` - List USB devices.
 
@@ -51,6 +57,8 @@
 `lsdev` - Communication resources used by devices.
 
 `lshw` - A combination of all tools. Great for reports.
+
+`sudo dmesg | grep CPU0` - Type of CPU
 
 ## User information
 `whoami` - display current user information.
@@ -78,6 +86,7 @@
 | `grep -rnw / -e 'password'` | Search line by line and match an expression. |
 | `grep -v -e 'test1' -e 'test2'` | Display lines that don't match 'test1' or 'test2' |
 | `grep -rin testval * | column -t | less -S` | Search testval everywhere, organize columns spaces and view output with `less` |
+| `locate filename.txt` | Locate a file |
 
 
 ## Filtering
@@ -96,5 +105,10 @@
 
 `crontab` - List of scheduled jobs.
 
+`locate file.txt | time` - Duration of process
+
 ## Networking
 `ifconfig` or `ipaddr` - view network addressing
+`netstat -tulpen` - Open ports
+`iptables -n -L INPUT` - Open ports
+
