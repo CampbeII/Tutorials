@@ -19,11 +19,33 @@ Note that prompts can be run as a regular user or an admin user.
 ## Files
 `type` - show file.
 
-`dir /s` - Searches folders.
-
-`dir /a` - List all files (hidden too).
-
 ## Searching
+
+### Command Prompt (CMD)
+
+#### 1. DIR
+`dir [filename] /s` - Searches folders.
+`dir "*filename*" /s` - Contained in filename
+
+| CMD | Description |
+| --- | ----------- |
+| `/s` | Recursive Search |
+| `/b` | Minimal Output |
+| `/a:h` | Hidden Files |
+| `/a:-d` | Exclude Directories |
+
+#### 2. WHERE
+Locate a file by name:
+```sh
+where /r C:\ "onedrive.exe"
+```
+
+Located multiple files:
+
+
+
+
+## Find String 
 `findstr` - find string.
 
 ## Processes
