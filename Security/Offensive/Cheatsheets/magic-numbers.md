@@ -15,7 +15,7 @@
 | Sun Rasterfile | .ras | 59 a6 6a 95 | Y.j. |
 | Targa  | .tga | xx xx xx | ... |
 | TIFF  (Motorola - big endian) | .tif | 4d 4d 00 2a | MM.* |
-| TIFF  (Intel - little endian) | .tif | 49 49 2a 00 | II*. |
+| TIFF  (Intel - little endian) | .tif | 49 49 2a 00 | II.* |
 | X11 Bitmap  | .xbm | xx xx | |
 | XCF Gimp file structure | .xcf | 67 69 6d 70 20 78 63 66 20 76 | gimp xcf |
 | Xfig  | .fig | 23 46 49 47 | #FIG |

