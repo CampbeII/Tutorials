@@ -1,14 +1,16 @@
 # Network Scanning
 
-1. Map out the target network using `nmap` and save the output to a file if the device is online. This command will 
+## 1. Map Network
+Use `nmap` to map out the network only saving results if a device is online.
 
 `-sn` - Ping scan, no ports
 `-n` - no dns
 `-oG -` - grepable output (the - requests output to be sent to stdout)
 
-`nmap 192.168.1.1/24 -sn -n -oG - | awk '/Up$/{print $2}' > ip-list.txt`
-
 Note that the pattern passed to `awk` is the ouput of the `-oG -`
+```sh
+nmap 192.168.1.1/24 -sn -n -oG - | awk '/Up$/{print $2}' > ip-list.txt
+```
 
 The result will be a file containing an ip on each line.
 
@@ -18,12 +20,12 @@ The result will be a file containing an ip on each line.
 192.168.1.120
 ```
 
-2. Scan a device to identify it.
+## 2. Scan a device to identify it.
 This scan will produce as much output as possible `-vvv` but take a long time. We want to see the services running on each port.
 `nmap 192.168.1.100 -sV sC -vvv `
 
 
-3. Target a service and map it out
+## 3. Enumerate Services
 Look for any services that could be exploited and begin [enumerating](Enumeration/README.md) it.
 
 ```
@@ -32,7 +34,7 @@ Look for any services that could be exploited and begin [enumerating](Enumeratio
 | Can't get directory listing: TIMEOUT
 ```
 
-3. Send Requests & Pull Banners
+## 4. Send Requests & Pull Banners
 Run the netcat command on port 80 and then send a GET request to view the server banner.
 
 ```sh

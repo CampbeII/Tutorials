@@ -30,4 +30,8 @@ Refer to the documentation for additional queries
 - [Bing](https://help.bing.microsoft.com/apex/index/18/en-US/10002)
 - [GHDB](https://www.exploit-db.com/google-hacking-database)
 - [Wayback Machine](https://web.archive.org/)
-- [ViewDNS.Info]()
+
+### Helpful Websites
+
+Subdomains
+[crt.sh](https://crt.sh)

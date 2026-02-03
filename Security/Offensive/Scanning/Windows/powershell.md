@@ -7,13 +7,9 @@ Get-ADUser -Filter *
 wmic useraccount get domain,name,sid
 ```
 
-## Current User
+## Specific User
 ```pwsh
 wmic useraccount where name='%username%' get domain,name,sid
-```
-
-## Specific user:
-```pwsh
 wmic useraccount where name='username' get sid
 ```
 
@@ -40,7 +36,7 @@ get-hotfix
 
 ## Find File
 ```pwsh
-Get-ChildItem -Path "C:\" -File -Include "*password*" -ErrorAction SilentlyContinue -Recurse -Force`
+Get-ChildItem -Path "C:\" -File -Include "*password*" -ErrorAction SilentlyContinue -Recurse -Force
 ```
 
 ## Find String In File
@@ -90,45 +86,33 @@ wmic /namespace:\\root\securitycenter2 path antivirusproduct
 ```
 
 
-## Windows Defender
-```pwsh
-Get-Service WinDefend
-```
-
+## Defender
 Check the status of defender real time protection.
 ```pwsh
+Get-MpThreat
+Get-Service WinDefend
 Get-MpComputerStatus | select RealTimeProtectionEnabled
 ```
 
 ## Host Based Firewall
 Get the status of the host based firewall
 ```pwsh
+# Status
 Get-NetFirewallProfile | Format-Table Name, Enabled
-```
 
-Check Firewall Rules:
-```pwsh
+# Rules
 Get-NetFirewallRule | Select DisplayName, Enabled, Description
-```
 
-To disable the firewall:
-```pwsh
+# Disable firewall
 Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
-```
 
-Test Firewall:
-```pwsh
+# Test Firewall
 Test-Connection -ComputerName 10.10.10.10 -Port 80
 ```
 
-Connect:
+## Socket Connections
 ```pwsh
 (New-Object System.Net.Sockets.TcpClient("10.10.10.10", "80")).Connected
-```
-
-## MS Defender
-```pwsh
-Get-MpThreat
 ```
 
 ## Sysmon
@@ -147,7 +131,6 @@ Get-EventLog -List
 ```
 
 ## Installed Applications & Processes
-
 List applications and version:
 ```pwsh
 wmic product get name, version
@@ -174,7 +157,7 @@ netstat -noa | findstr "LISTENING" | findstr "<PORT IDENTIFIED ABOVE>"
 ```
 
 ## DNS Zone Transfer
-The following commands will performa a DNS zone transfer to retrieve additional DNS information.
+The following commands will perform a DNS zone transfer to retrieve additional DNS information.
 ```pwsh
 nslookup.exe
 > server 10.10.10.10
